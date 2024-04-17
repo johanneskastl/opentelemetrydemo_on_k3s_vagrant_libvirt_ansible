@@ -32,3 +32,23 @@
                       - path: /
                         pathType: Prefix
                         port: 8080
+
+    - name: 'Output Grafana URL'
+      delegate_to: 'localhost'
+      ansible.builtin.debug:
+        msg: "The Grafana instance is reachable at http://demo.{{ hostvars['k3s1']['ansible_default_ipv4']['address'] }}.sslip.io/grafana"
+
+    - name: 'Output Locust (Loadgenerator) URL'
+      delegate_to: 'localhost'
+      ansible.builtin.debug:
+        msg: "The Locust (Loadgenerator) is reachable at http://demo.{{ hostvars['k3s1']['ansible_default_ipv4']['address'] }}.sslip.io/loadgen"
+
+    - name: 'Output Jager UI URL'
+      delegate_to: 'localhost'
+      ansible.builtin.debug:
+        msg: "The Jager UI is reachable at http://demo.{{ hostvars['k3s1']['ansible_default_ipv4']['address'] }}.sslip.io/jaeger/ui"
+
+    - name: 'Output Webshop URL'
+      delegate_to: 'localhost'
+      ansible.builtin.debug:
+        msg: "The Webshop is reachable at http://demo.{{ hostvars['k3s1']['ansible_default_ipv4']['address'] }}.sslip.io/"
